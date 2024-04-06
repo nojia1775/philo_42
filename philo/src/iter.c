@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:29:46 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/06 18:48:41 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/06 19:00:57 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,6 +69,7 @@ static void	mutex(t_philo *philo, int lock)
 			return ;
 		}
 		my_printf(4, philo, 1);
+		my_printf(1, philo, 1);
 	}
 	else
 	{
@@ -103,15 +104,14 @@ void	iter(t_philo *philo)
 		return ;
 	my_printf(0, philo, 1);
 	mutex(philo, 1);
+	meal(philo);
 	if (isdead(philo))
 		return ;
-	meal(philo);
-	my_printf(1, philo, 1);
 	usleep(philo->args->time_eat * 1000);
 	mutex(philo, 0);
+	my_printf(2, philo, 1);
 	if (isdead(philo))
 		return ;
-	my_printf(2, philo, 1);
 	usleep(philo->args->time_sleep * 1000);
 	if (isdead(philo))
 		return ;
