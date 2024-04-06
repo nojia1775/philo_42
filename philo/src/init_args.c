@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 11:15:54 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/06 13:49:41 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:34:53 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,12 @@
 static void	init_mutexes(t_arg *args)
 {
 	pthread_mutex_init(&args->_cur, NULL);
-	pthread_mutex_init(&args->_nbr_philo, NULL);
-	pthread_mutex_init(&args->_time_die, NULL);
-	pthread_mutex_init(&args->_time_eat, NULL);
-	pthread_mutex_init(&args->_time_sleep, NULL);
+	//pthread_mutex_init(&args->_nbr_philo, NULL);
+	//pthread_mutex_init(&args->_time_die, NULL);
+	//pthread_mutex_init(&args->_time_eat, NULL);
+	//pthread_mutex_init(&args->_time_sleep, NULL);
 	pthread_mutex_init(&args->_dead, NULL);
-	pthread_mutex_init(&args->_start, NULL);
-	pthread_mutex_init(&args->_times, NULL);
+	//pthread_mutex_init(&args->_start, NULL);
 	pthread_mutex_init(&args->_print, NULL);
 	pthread_mutex_init(&args->_spend, NULL);
 }

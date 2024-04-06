@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:30:01 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/06 16:22:32 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:34:40 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,19 +39,18 @@ int	loop_thread(t_philo *philos);
 struct s_arg
 {
         int             nbr_philo;
-        pthread_mutex_t _nbr_philo;
+        //pthread_mutex_t _nbr_philo;
         int             time_die;
-        pthread_mutex_t _time_die;
+        //pthread_mutex_t _time_die;
         int             time_eat;
-        pthread_mutex_t _time_eat;
+        //pthread_mutex_t _time_eat;
         int             time_sleep;
-        pthread_mutex_t _time_sleep;
+        //pthread_mutex_t _time_sleep;
         int             dead;
         pthread_mutex_t _dead;
         int             times;
-        pthread_mutex_t _times;
         struct timeval  start;
-        pthread_mutex_t _start;
+        //pthread_mutex_t _start;
         struct timeval  cur;
         pthread_mutex_t _cur;
         pthread_mutex_t _print;

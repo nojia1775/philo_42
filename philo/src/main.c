@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:29:53 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/06 16:50:01 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/06 18:25:17 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,8 @@ static int      init_philos(t_philo *philos, pthread_mutex_t **forks, t_arg *a)
                 philos[i].philos = philos;
                 philos[i].forks = forks;
                 philos[i].times = a->times;
-                gettimeofday(&a->start, NULL);
         }
+        gettimeofday(&a->start, NULL);
         if (!loop_thread(philos))
                 return (0);
         return (1);
