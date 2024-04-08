@@ -55,12 +55,13 @@ size_t  ft_strlen(char *str)
         return (len);
 }
 
-void	my_printf(int text, t_philo *philo, int lock)
+void	my_printf(int text, t_philo *philo)
 {
 	char	*str[5];
 	char	*colors[5];
 
-	(void)lock;
+	if (philo->args->dead && text != 3)
+		return ;
 	get_time(philo);
 	str[0] = "is thinking";
 	str[1] = "is eating";

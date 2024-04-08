@@ -107,9 +107,13 @@ int     main(int argc, char **argv)
         pthread_mutex_t **forks;
         t_arg           args;
         int             i;
+        int             pars;
 
-        if (!parsing(argc, argv))
-                return (1);
+        pars = parsing(argc, argv);
+        if (!pars)
+                return (printf("Error\n"), 1);
+        else if (pars == -1)
+                return (0);
         init_args(argc, argv, &args);
         philos = (t_philo *)malloc(sizeof(t_philo) * args.nbr_philo);
         forks = init_forks(args.nbr_philo);

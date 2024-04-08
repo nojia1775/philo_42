@@ -31,7 +31,7 @@ void    init_args(int argc, char **argv, t_arg *args);
 void    get_time(t_philo *philo);
 void    iter(t_philo *philo);
 int             ft_free(t_philo *philos, pthread_mutex_t **forks, int nbr);
-void    my_printf(int text, t_philo *philo, int lock);
+void    my_printf(int text, t_philo *philo);
 void	meal(t_philo *philo);
 void     *behav(void *arg);
 int	loop_thread(t_philo *philos);
@@ -39,18 +39,13 @@ int	loop_thread(t_philo *philos);
 struct s_arg
 {
         int             nbr_philo;
-        //pthread_mutex_t _nbr_philo;
         int             time_die;
-        //pthread_mutex_t _time_die;
         int             time_eat;
-        //pthread_mutex_t _time_eat;
         int             time_sleep;
-        //pthread_mutex_t _time_sleep;
         int             dead;
         pthread_mutex_t _dead;
         int             times;
         struct timeval  start;
-        //pthread_mutex_t _start;
         struct timeval  cur;
         pthread_mutex_t _cur;
         pthread_mutex_t _print;

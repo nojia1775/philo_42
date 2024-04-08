@@ -66,7 +66,7 @@ static int	isuint(char *str)
 static int      isvalid(char *str)
 {
         if (*str == '\0' || !isuint(str))
-                return (printf("null ou non uint\n") - 17);
+                return (0);
         return (1);
 }
 
@@ -79,12 +79,12 @@ int     parsing(int argc, char **argv)
                 return (0);
         while (argv[i])
                 if (!isvalid(argv[i++]))
-                        return (printf("pb\n") - 3);
+                        return (0);
         if (ft_atoi(argv[1]) == 1)
         {
                 usleep(ft_atoi(argv[2]) * 1000);
                 return (printf("%s%d 1 died\n%s", RED, ft_atoi(argv[2]),
-                        RESET), 0);
+                        RESET), -1);
         }
         return (1);
 }
