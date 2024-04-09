@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:29:53 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/09 14:56:35 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/09 17:55:28 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,11 +110,11 @@ int	main(int argc, char **argv)
 	int				pars;
 
 	pars = parsing(argc, argv);
-	if (ft_atoi(argv[1]) == 0)
-		return (0);
 	if (!pars)
 		return (printf("Error\n"), 1);
 	else if (pars == -1)
+		return (0);
+	if (ft_atoi(argv[1]) == 0)
 		return (0);
 	init_args(argc, argv, &args);
 	philos = (t_philo *)malloc(sizeof(t_philo) * args.nbr_philo);
