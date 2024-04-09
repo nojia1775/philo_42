@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:29:55 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/09 15:02:29 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/09 16:32:26 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	parsing(int argc, char **argv)
 			return (0);
 	if (ft_atoi(argv[1]) == 1)
 	{
+		printf("0 1 has taken a fork\n");
 		usleep(ft_atoi(argv[2]) * 1000);
 		return (printf("%s%d 1 died\n%s", RED, ft_atoi(argv[2]),
 				RESET), -1);
