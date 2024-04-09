@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:30:01 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/09 14:34:54 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/09 18:27:07 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,9 @@ int		ft_free(t_philo *philos, pthread_mutex_t **forks, int nbr);
 void	my_printf(int text, t_philo *philo);
 void	meal(t_philo *philo);
 void	*behav(void *arg);
-int		loop_thread(t_philo *philos);
+int		loop_even(t_philo *philos);
+int		loop_odd(t_philo *philos);
+int		loop(t_philo *philos);
 
 struct s_arg
 {
