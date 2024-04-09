@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:29:46 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/06 19:00:57 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/09 14:39:08 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ void	get_time(t_philo *philo)
 	pthread_mutex_lock(&philo->args->_spend);
 	gettimeofday(&philo->args->cur, NULL);
 	philo->args->spend = (philo->args->cur.tv_sec
-		- philo->args->start.tv_sec) * 1000\
+			- philo->args->start.tv_sec) * 1000
 		+ (philo->args->cur.tv_usec
-		- philo->args->start.tv_usec) / 1000;
+			- philo->args->start.tv_usec) / 1000;
 	pthread_mutex_unlock(&philo->args->_cur);
 	pthread_mutex_unlock(&philo->args->_spend);
 }

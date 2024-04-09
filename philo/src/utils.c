@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:29:58 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/06 15:56:33 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/09 15:04:39 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,20 +39,20 @@ int	ft_atoi(const char *nptr)
 	return (result * sign);
 }
 
-size_t  ft_strlen(char *str)
+size_t	ft_strlen(char *str)
 {
-        int     i;
-        size_t  len;
+	int		i;
+	size_t	len;
 
-        i = 0;
-        len = 0;
-        while (str[i])
-        {
-                if (str[i] != ' ')
-                        len++;
-                i++;
-        }
-        return (len);
+	i = 0;
+	len = 0;
+	while (str[i])
+	{
+		if (str[i] != ' ')
+			len++;
+		i++;
+	}
+	return (len);
 }
 
 void	my_printf(int text, t_philo *philo)
