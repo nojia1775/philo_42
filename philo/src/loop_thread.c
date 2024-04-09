@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/06 16:18:16 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/09 18:26:43 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/09 18:40:57 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,13 +37,15 @@ int	loop_odd(t_philo *philos)
 		if (pthread_create(philos[i].thread, NULL, behav,
 				&philos[i]))
 			return (0);
-		if (i + philos[0].args->nbr_philo - 1
-			>= philos[0].args->nbr_philo - 1)
-			i = i + philos[0].args->nbr_philo - 1
-			- philos[0].args->nbr_philo - 1;
-		else
-			i += philos[0].args->nbr_philo - 1;
+		i++;
+		usleep(philos[0].args->time_eat * 1000);
 	}
+	// if (pthread_create(philos[0].thread, NULL, behav,
+	// 			&philos[0]))
+	// 		return (0);
+	// if (pthread_create(philos[philos[0].args->nbr_philo - 1].thread, NULL, behav,
+	// 		&philos[philos[0].args->nbr_philo - 1]))
+	// 	return (0);
 	return (1);
 }
 
