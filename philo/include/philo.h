@@ -37,6 +37,7 @@ void	*behav(void *arg);
 int		loop_even(t_philo *philos);
 int		loop_odd(t_philo *philos);
 int		loop(t_philo *philos);
+void	unlock(t_philo *philo);
 
 struct s_arg
 {

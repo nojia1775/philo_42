@@ -87,3 +87,9 @@ void	meal(t_philo *philo)
 	philo->last_meal = philo->args->spend;
 	pthread_mutex_unlock(&philo->args->_spend);
 }
+
+void	unlock(t_philo *philo)
+{
+	pthread_mutex_unlock(philo->fork[philo->pos % 2]);
+	pthread_mutex_unlock(philo->fork[(philo->pos + 1) % 2]);
+}

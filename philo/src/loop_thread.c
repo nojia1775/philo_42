@@ -31,21 +31,24 @@ int	loop_odd(t_philo *philos)
 {
 	int	i;
 
-	i = 0;
+	i = 1;
 	while (i < philos[0].args->nbr_philo)
 	{
 		if (pthread_create(philos[i].thread, NULL, behav,
 				&philos[i]))
 			return (0);
-		i++;
-		usleep(philos[0].args->time_eat * 1000);
+		i += 2;
 	}
-	// if (pthread_create(philos[0].thread, NULL, behav,
-	// 			&philos[0]))
-	// 		return (0);
-	// if (pthread_create(philos[philos[0].args->nbr_philo - 1].thread, NULL, behav,
-	// 		&philos[philos[0].args->nbr_philo - 1]))
-	// 	return (0);
+	i = 2;
+	while (i < philos[0].args->nbr_philo)
+	{
+		if (pthread_create(philos[i].thread, NULL, behav,
+				&philos[i]))
+			return (0);
+		i += 2;
+	}
+	if (pthread_create(philos[0].thread, NULL, behav, &philos[0]))
+		return (0);
 	return (1);
 }
 

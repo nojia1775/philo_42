@@ -25,12 +25,16 @@ void	get_time(t_philo *philo)
 	pthread_mutex_unlock(&philo->args->_spend);
 }
 
-static int	isdead(t_philo *philo)
+static int	isdead(t_philo *philo, int hasfork)
 {
 	get_time(philo);
 	pthread_mutex_lock(&philo->args->_dead);
 	if (philo->args->dead)
+	{
+		if (hasfork)
+			unlock(philo);
 		return (pthread_mutex_unlock(&philo->args->_dead), 1);
+	}
 	pthread_mutex_lock(&philo->args->_spend);
 	if (philo->args->spend - philo->last_meal > philo->args->time_die)
 	{
@@ -38,6 +42,8 @@ static int	isdead(t_philo *philo)
 		pthread_mutex_unlock(&philo->args->_spend);
 		my_printf(3, philo);
 		pthread_mutex_unlock(&philo->args->_dead);
+		if (hasfork)
+			unlock(philo);
 		return (1);
 	}
 	pthread_mutex_unlock(&philo->args->_dead);
@@ -50,19 +56,15 @@ static void	mutex(t_philo *philo, int lock)
 	if (lock)
 	{
 		pthread_mutex_lock(philo->fork[philo->pos % 2]);
-		if (isdead(philo))
+		if (isdead(philo, 0))
 		{
 			pthread_mutex_unlock(philo->fork[philo->pos % 2]);
 			return ;
 		}
 		my_printf(4, philo);
 		pthread_mutex_lock(philo->fork[(philo->pos + 1) % 2]);
-		if (isdead(philo))
-		{
-			pthread_mutex_unlock(philo->fork[philo->pos % 2]);
-			pthread_mutex_unlock(philo->fork[(philo->pos + 1) % 2]);
+		if (isdead(philo, 1))
 			return ;
-		}
 		my_printf(4, philo);
 		my_printf(1, philo);
 	}
@@ -75,19 +77,21 @@ static void	mutex(t_philo *philo, int lock)
 
 void	iter(t_philo *philo)
 {
-	if (isdead(philo))
+	if (isdead(philo, 0))
 		return ;
 	my_printf(0, philo);
+	if (philo->args->nbr_philo % 2)
+		usleep(10000);
 	mutex(philo, 1);
 	meal(philo);
-	if (isdead(philo))
+	if (isdead(philo, 1))
 		return ;
 	usleep(philo->args->time_eat * 1000);
 	mutex(philo, 0);
 	my_printf(2, philo);
-	if (isdead(philo))
+	if (isdead(philo, 0))
 		return ;
 	usleep(philo->args->time_sleep * 1000);
-	if (isdead(philo))
+	if (isdead(philo, 0))
 		return ;
 }
