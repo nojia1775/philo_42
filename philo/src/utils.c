@@ -6,7 +6,7 @@
 /*   By: nadjemia <nadjemia@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/26 11:29:58 by nadjemia          #+#    #+#             */
-/*   Updated: 2024/04/09 15:04:39 by nadjemia         ###   ########.fr       */
+/*   Updated: 2024/04/11 11:07:51 by nadjemia         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,8 +60,10 @@ void	my_printf(int text, t_philo *philo)
 	char	*str[5];
 	char	*colors[5];
 
+	pthread_mutex_lock(&philo->args->_dead);
 	if (philo->args->dead && text != 3)
-		return ;
+		return ((void)pthread_mutex_unlock(&philo->args->_dead));
+	pthread_mutex_unlock(&philo->args->_dead);
 	get_time(philo);
 	str[0] = "is thinking";
 	str[1] = "is eating";
@@ -86,10 +88,4 @@ void	meal(t_philo *philo)
 	pthread_mutex_lock(&philo->args->_spend);
 	philo->last_meal = philo->args->spend;
 	pthread_mutex_unlock(&philo->args->_spend);
-}
-
-void	unlock(t_philo *philo)
-{
-	pthread_mutex_unlock(philo->fork[philo->pos % 2]);
-	pthread_mutex_unlock(philo->fork[(philo->pos + 1) % 2]);
 }
